@@ -21,10 +21,8 @@ public class CommandTest {
         testInvalidCommand.add("# 3 3 4");
         testInvalidCommand.add("W 13.1 13.2 13.2");
 
+        testInvalidCommand.forEach(input -> assertFalse(input.matches(Command.UPDATE.getDescription())));
 
-        for(String input : testInvalidCommand) {
-            assertFalse(input.matches(Command.UPDATE.getDescription()));
-        }
     }
 
     @Test
@@ -38,9 +36,8 @@ public class CommandTest {
         testValidCommand.add("Q 0.1");
         testValidCommand.add("K 0.1 5 0.2");
 
-        for(String input : testValidCommand) {
-            assertTrue(input.matches(Command.UPDATE.getDescription()));
-        }
+        testValidCommand.forEach(input -> assertTrue(input.matches(Command.UPDATE.getDescription())));
+
     }
 
     @Test
@@ -56,10 +53,7 @@ public class CommandTest {
         testInvalidCommand.add("1 H");
         testInvalidCommand.add("1 X Y");
 
-
-        for(String input : testInvalidCommand) {
-            assertFalse(input.matches(Command.CHECKOUT.getDescription()));
-        }
+        testInvalidCommand.forEach(input -> assertFalse(input.matches(Command.CHECKOUT.getDescription())));
     }
 
     @Test
@@ -73,9 +67,8 @@ public class CommandTest {
         testValidCommand.add("A B A B A B A B");
         testValidCommand.add("G H H H H H G G G G");
 
-        for(String input : testValidCommand) {
-            assertTrue(input.matches(Command.CHECKOUT.getDescription()));
-        }
+        testValidCommand.forEach(input -> assertTrue(input.matches(Command.CHECKOUT.getDescription())));
+
     }
 
     @Test
@@ -83,6 +76,22 @@ public class CommandTest {
        String input = "HELP";
 
        assertTrue(input.matches(Command.HELP.getDescription()));
+
+    }
+
+    @Test
+    public void testInvalidPRODUCTSCommand() {
+        String input = "products";
+
+        assertFalse(input.matches(Command.PRODUCT_LIST.getDescription()));
+
+    }
+
+    @Test
+    public void testValidPRODUCTSCommand() {
+        String input = "PRODUCTS";
+
+        assertTrue(input.matches(Command.PRODUCT_LIST.getDescription()));
 
     }
 

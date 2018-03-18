@@ -4,6 +4,7 @@ public enum Command {
     CHECKOUT("[A-Z]( [A-Z])*"),
     UPDATE("([A-Z]) (\\d+(\\.\\d+)?)( (\\d+) (\\d+(\\.\\d+)?))?"),
     HELP("HELP"),
+    PRODUCT_LIST("PRODUCTS"),
     QUIT("QUIT");
 
     private final String description;

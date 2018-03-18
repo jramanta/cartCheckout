@@ -4,6 +4,7 @@ import com.jramanta.cartCheckout.model.Command;
 import com.jramanta.cartCheckout.model.Product;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CommandService {
 
@@ -42,10 +43,14 @@ public class CommandService {
                 break;
             case CHECKOUT:
                 Double totalPrice = CartCheckoutService.calculateCartPrice(input, availableProducts);
-                System.out.println("The total price of the cart is: " + totalPrice + "\n");
+                System.out.println("The total price of the cart is: " + totalPrice + ".\n");
                 break;
             case HELP:
                 printCommandGuidelines();
+                break;
+            case PRODUCT_LIST:
+                String productList = printAvailableProductsList(availableProducts);
+                System.out.println("The list of available product codes is: " + productList + ".\n");
                 break;
             case QUIT:
                 System.out.println("Exiting the application.");
@@ -60,9 +65,14 @@ public class CommandService {
      * The implementation of the HELP command. Prints out a list of the available valid commands of the system.
      * */
     private static void printCommandGuidelines() {
-        System.out.println("- Enter pricing update command in the format: <PRODUCT> <PRICE> <NUM OF ITEMS> <OFFER PRICE>. ex. A 30 3 70");
-        System.out.println("- Enter checkout command in the format of space separated product codes. ex. A B C A D");
+        System.out.println("- Enter pricing update command in the format: <PRODUCT> <PRICE> <NUM OF ITEMS> <OFFER PRICE>. ex. A 30 3 70.");
+        System.out.println("- Enter checkout command in the format of space separated product codes. ex. A B C A D.");
+        System.out.println("- Enter PRODUCTS to see a list of all the available product codes.");
         System.out.println("- Enter QUIT to exit the application.\n");
+    }
+
+    private static String printAvailableProductsList(Map<String, Product> availableProducts) {
+        return availableProducts.keySet().stream().collect(Collectors.joining(" "));
     }
 
 }

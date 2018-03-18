@@ -14,68 +14,82 @@ import static org.junit.Assert.*;
 public class CommandServiceTest {
 
     @Test(expected = NoSuchMethodException.class)
-    public void testInvalidCommand() throws NoSuchMethodException{
+    public void testInvalidCommand() throws NoSuchMethodException {
         String input = "ABC";
         CommandService.parseCommand(input);
     }
 
     @Test
-    public void testValidUpdateCommandWithOffer() {
+    public void testValidUpdateCommandWithOffer() throws NoSuchMethodException {
         String input = "A 30.5 3 75.5";
-        try {
-            Command command = CommandService.parseCommand(input);
-            assertEquals(Command.UPDATE, command);
-        } catch (NoSuchMethodException e) {
-            fail();
-        }
+        Command command = CommandService.parseCommand(input);
+        assertEquals(Command.UPDATE, command);
     }
 
     @Test
-    public void testValidUpdateCommandWithoutOffer() {
+    public void testValidUpdateCommandWithoutOffer() throws NoSuchMethodException {
         String input = "A 30.5";
-        try {
-            Command command = CommandService.parseCommand(input);
-            assertEquals(Command.UPDATE, command);
-        } catch (NoSuchMethodException e) {
-            fail();
-        }
+        Command command = CommandService.parseCommand(input);
+        assertEquals(Command.UPDATE, command);
+    }
 
+    @Test(expected = NoSuchMethodException.class)
+    public void testInvalidUpdateCommandWithoutOffer() throws NoSuchMethodException {
+        String input = "A 30.5 77";
+        CommandService.parseCommand(input);
     }
 
     @Test
-    public void testValidCheckoutCommand() {
+    public void testValidCheckoutCommand() throws NoSuchMethodException {
         String input = "A B C";
-        try {
-            Command command = CommandService.parseCommand(input);
-            assertEquals(Command.CHECKOUT, command);
-        } catch (NoSuchMethodException e) {
-            fail();
-        }
+        Command command = CommandService.parseCommand(input);
+        assertEquals(Command.CHECKOUT, command);
+    }
 
+    @Test(expected = NoSuchMethodException.class)
+    public void testInvalidCheckoutCommand() throws NoSuchMethodException {
+        String input = "A BB C";
+        CommandService.parseCommand(input);
     }
 
     @Test
-    public void testValidHelpCommand() {
+    public void testValidHelpCommand() throws NoSuchMethodException {
         String input = "HELP";
-        try {
-            Command command = CommandService.parseCommand(input);
-            assertEquals(Command.HELP, command);
-        } catch (NoSuchMethodException e) {
-            fail();
-        }
+        Command command = CommandService.parseCommand(input);
+        assertEquals(Command.HELP, command);
+    }
 
+    @Test(expected = NoSuchMethodException.class)
+    public void testInvalidHelpCommand() throws NoSuchMethodException {
+        String input = "help";
+        CommandService.parseCommand(input);
     }
 
     @Test
-    public void testValidQuitCommand() {
+    public void testValidQuitCommand() throws NoSuchMethodException {
         String input = "QUIT";
-        try {
-            Command command = CommandService.parseCommand(input);
-            assertEquals(Command.QUIT, command);
-        } catch (NoSuchMethodException e) {
-            fail();
-        }
+        Command command = CommandService.parseCommand(input);
+        assertEquals(Command.QUIT, command);
+    }
 
+    @Test(expected = NoSuchMethodException.class)
+    public void testInvalidQuitCommand() throws NoSuchMethodException {
+        String input = "quit";
+        Command command = CommandService.parseCommand(input);
+        assertEquals(Command.QUIT, command);
+    }
+
+    @Test
+    public void testValidProductsCommand() throws NoSuchMethodException {
+        String input = "PRODUCTS";
+        Command command = CommandService.parseCommand(input);
+        assertEquals(Command.PRODUCT_LIST, command);
+    }
+
+    @Test(expected = NoSuchMethodException.class)
+    public void testInvalidProductsCommand() throws NoSuchMethodException {
+        String input = "products";
+        CommandService.parseCommand(input);
     }
 
     @Test

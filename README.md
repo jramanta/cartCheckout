@@ -17,6 +17,8 @@ The commands you can run are:
 
 **HELP**: It prints a list of the available commands with explanation of how to use them and an example command.
 
+**PRODUCTS**: It prints a list of all the available product codes.
+
 **C p c o**: It updates the pricing of C product with price equal to p and offer on c count on products with o offer price.
 ```bash
 A 30 4 110
