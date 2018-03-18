@@ -38,6 +38,7 @@ public class CommandService {
 
         switch (command) {
             case UPDATE:
+                PricingService.applyPricingRule(input, availableProducts);
                 System.out.println("Pricing rule was applied.");
                 break;
             case CHECKOUT:
