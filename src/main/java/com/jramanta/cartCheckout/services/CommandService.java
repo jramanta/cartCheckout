@@ -19,4 +19,21 @@ public class CommandService {
         throw new NoSuchMethodException();
     }
 
+    public static void applyCommand(Command command, String input,
+                                    Map<String, Product> availableProducts) throws NoSuchMethodException {
+
+        switch (command) {
+            case UPDATE:
+                System.out.println("Pricing rule was applied.");
+                break;
+            case CHECKOUT:
+                Double totalPrice = CartCheckoutService.calculateCartPrice(input, availableProducts);
+                System.out.println("The total price of the cart is: " + totalPrice);
+                break;
+            default:
+                throw new NoSuchMethodException();
+        }
+
+    }
+
 }
