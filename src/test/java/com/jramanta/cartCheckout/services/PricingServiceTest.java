@@ -4,7 +4,6 @@ import com.jramanta.cartCheckout.TestUtil;
 import com.jramanta.cartCheckout.model.Product;
 import org.junit.Before;
 import org.junit.Test;
-import org.omg.CORBA.NO_IMPLEMENT;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -194,5 +193,45 @@ public class PricingServiceTest {
         } catch (NoSuchMethodException e) {
             fail();
         }
+    }
+
+    @Test(expected = NoSuchMethodException.class)
+    public void testZeroOfferPriceInputUpdate() throws NoSuchMethodException {
+        String input = "A 60 4 0";
+
+        PricingService.applyPricingRule(input, availableProducts);
+
+    }
+
+    @Test(expected = NoSuchMethodException.class)
+    public void testEqualToOneOfferCountInputUpdate() throws NoSuchMethodException {
+        String input = "A 60 1 40";
+
+        PricingService.applyPricingRule(input, availableProducts);
+
+    }
+
+    @Test(expected = NoSuchMethodException.class)
+    public void testNegativeOfferPriceInputUpdate() throws NoSuchMethodException {
+        String input = "A 60 -2 40";
+
+        PricingService.applyPricingRule(input, availableProducts);
+
+    }
+
+    @Test(expected = NoSuchMethodException.class)
+    public void testNegativeProductPriceInputUpdate() throws NoSuchMethodException {
+        String input = "A -60 2 40";
+
+        PricingService.applyPricingRule(input, availableProducts);
+
+    }
+
+    @Test(expected = NoSuchMethodException.class)
+    public void testZeroProductPriceInputUpdate() throws NoSuchMethodException {
+        String input = "A 0 2 40";
+
+        PricingService.applyPricingRule(input, availableProducts);
+
     }
 }

@@ -63,7 +63,8 @@ public class PricingService {
     /**
      * If given rule's product code is equal to one of the existing products then the pricing and the offer.
      * */
-    private static void setProductPricingFromRule(PricingRule rule, Map<String, Product> availableProducts) {
+    private static void setProductPricingFromRule(PricingRule rule, Map<String, Product> availableProducts)
+    throws NoSuchMethodException {
         if (availableProducts.containsKey(rule.getProductCode()) && rule.getProductPrice() != null
                 && rule.getProductPrice() > 0) {
             Product aProduct = availableProducts.get(rule.getProductCode());
@@ -74,6 +75,8 @@ public class PricingService {
             } else {
                 aProduct.setWeeklyOffer(null);
             }
+        } else {
+            throw new NoSuchMethodException();
         }
     }
 
@@ -84,12 +87,16 @@ public class PricingService {
      * @param rule a {@code PricingRule} object
      * @return an optional {@code WeeklyOffer}
      * */
-    private static Optional<WeeklyOffer> findProductOfferFromPricingRule(PricingRule rule) {
+    private static Optional<WeeklyOffer> findProductOfferFromPricingRule(PricingRule rule)
+    throws NoSuchMethodException {
         Optional<WeeklyOffer> weeklyOffer = Optional.empty();
 
-        if (rule.getNumOfItems() != null && rule.getOfferPricing() != null &&
-                rule.getNumOfItems() > 1 && rule.getOfferPricing() > 0) {
-            weeklyOffer = Optional.of(new WeeklyOffer(rule.getNumOfItems(), rule.getOfferPricing()));
+        if (rule.getNumOfItems() != null && rule.getOfferPricing() != null) {
+            if (rule.getNumOfItems() > 1 && rule.getOfferPricing() > 0) {
+                weeklyOffer = Optional.of(new WeeklyOffer(rule.getNumOfItems(), rule.getOfferPricing()));
+            } else {
+                throw new NoSuchMethodException();
+            }
         }
 
         return weeklyOffer;
