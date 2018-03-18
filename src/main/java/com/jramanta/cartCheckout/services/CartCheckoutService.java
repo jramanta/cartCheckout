@@ -18,7 +18,7 @@ public class CartCheckoutService {
      * @param availableProducts a map of all available products with key the products' code.
      * */
     public static Double calculateCartPrice(String cartInput, Map<String, Product> availableProducts) {
-        Map<String, Long> cart = buildUserCart(cartInput);
+        Map<String, Long> cart = buildUserCart(cartInput, availableProducts);
 
         return cart.entrySet()
                 .stream()
@@ -44,11 +44,15 @@ public class CartCheckoutService {
      *
      * @param cartInput our cart for checkout in the form of product codes separated by a space.
      * */
-    private static Map<String, Long> buildUserCart(String cartInput) {
+    private static Map<String, Long> buildUserCart(String cartInput, Map<String, Product> availableProducts) {
         List<String> productCodes = Arrays.asList(cartInput.split(" "));
-        return productCodes
-                .stream()
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        if(availableProducts.keySet().containsAll(productCodes)) {
+            return productCodes
+                    .stream()
+                    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     /**

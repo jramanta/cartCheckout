@@ -20,6 +20,18 @@ public class CartCheckoutServiceTest {
         availableProducts = new HashMap<>();
     }
 
+    // INVALID PRODUCTS IN CART
+
+    @Test(expected = IllegalArgumentException.class)
+    public void checkInvalidProductsInCart() {
+        String cartInput = "A A A B A A";
+
+        Product productA = TestUtil.initProduct("A", 30);
+        availableProducts.put("A", productA);
+
+        double price = CartCheckoutService.calculateCartPrice(cartInput, availableProducts);
+    }
+
     // SINGLE PRODUCT CART TESTS
 
     @Test
@@ -36,7 +48,7 @@ public class CartCheckoutServiceTest {
     }
 
     @Test
-    public void calculateSingleProductWithOfferAndUnitPrice() {
+    public void calculateSingleProductWithOfferAndUnitPrice() throws NoSuchMethodException {
 
         String cartInput = "A A A A A A A";
 
@@ -49,7 +61,7 @@ public class CartCheckoutServiceTest {
     }
 
     @Test
-    public void calculateSingleProductWithOfferOnly() {
+    public void calculateSingleProductWithOfferOnly() throws NoSuchMethodException {
 
         String cartInput = "A A A A A A";
 
@@ -62,7 +74,7 @@ public class CartCheckoutServiceTest {
     }
 
     @Test
-    public void calculateSingleProductWithOfferNotApplied() {
+    public void calculateSingleProductWithOfferNotApplied() throws NoSuchMethodException {
 
         String cartInput = "A A A A";
 
@@ -77,7 +89,7 @@ public class CartCheckoutServiceTest {
     // SINGLE PRODUCT CART TESTS WITH DECIMAL PRICES
 
     @Test
-    public void calculateSingleProductDecimalPriceWithoutOffer() {
+    public void calculateSingleProductDecimalPriceWithoutOffer() throws NoSuchMethodException {
 
         String cartInput = "A A A A A A A";
 
@@ -90,7 +102,7 @@ public class CartCheckoutServiceTest {
     }
 
     @Test
-    public void calculateSingleProductDecimalPriceWithOfferAndUnitPrice() {
+    public void calculateSingleProductDecimalPriceWithOfferAndUnitPrice() throws NoSuchMethodException {
 
         String cartInput = "A A A A A A A";
 
@@ -103,7 +115,7 @@ public class CartCheckoutServiceTest {
     }
 
     @Test
-    public void calculateSingleProductDecimalPriceWithOfferOnly() {
+    public void calculateSingleProductDecimalPriceWithOfferOnly() throws NoSuchMethodException {
 
         String cartInput = "A A A A A A";
 

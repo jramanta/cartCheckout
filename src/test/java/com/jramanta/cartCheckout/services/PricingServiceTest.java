@@ -4,6 +4,7 @@ import com.jramanta.cartCheckout.TestUtil;
 import com.jramanta.cartCheckout.model.Product;
 import org.junit.Before;
 import org.junit.Test;
+import org.omg.CORBA.NO_IMPLEMENT;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +28,20 @@ public class PricingServiceTest {
         availableProducts.put("B", productB);
         availableProducts.put("C", productC);
         availableProducts.put("D", productD);
+    }
+
+    @Test(expected = NoSuchMethodException.class)
+    public void testInvalidRuleInput() throws NoSuchMethodException {
+        String inputY = "A 40 10 10 10";
+
+        PricingService.applyPricingRule(inputY, availableProducts);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testInvalidProductInRule() throws NoSuchMethodException {
+        String inputY = "Y 40";
+
+        PricingService.applyPricingRule(inputY, availableProducts);
     }
 
     @Test

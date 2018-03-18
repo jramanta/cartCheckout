@@ -24,6 +24,8 @@ public class PricingService {
                 .orElseThrow(NoSuchMethodException::new);
         if (availableProducts.containsKey(pricingRule.getProductCode())) {
             setProductPricingFromRule(pricingRule, availableProducts);
+        } else {
+            throw new IllegalArgumentException();
         }
 
     }
