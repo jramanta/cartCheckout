@@ -3,7 +3,9 @@ package com.jramanta.cartCheckout;
 import com.jramanta.cartCheckout.model.Product;
 import com.jramanta.cartCheckout.model.WeeklyOffer;
 
-public class ProductUtil {
+public class TestUtil {
+
+    public static final double DELTA = 1e-10;
 
     public static Product initProduct(String code, double price) {
         Product aProduct = new Product(code);

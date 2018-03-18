@@ -5,11 +5,10 @@ import org.junit.Test;
 
 import java.util.Map;
 
+import static com.jramanta.cartCheckout.TestUtil.DELTA;
 import static org.junit.Assert.*;
 
 public class InitializeServiceTest {
-
-    private static final double DELTA = 1e-10;
 
     @Test
     public void checkValidInitialization() throws NoSuchMethodException {

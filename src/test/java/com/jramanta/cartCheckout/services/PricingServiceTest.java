@@ -1,6 +1,6 @@
 package com.jramanta.cartCheckout.services;
 
-import com.jramanta.cartCheckout.ProductUtil;
+import com.jramanta.cartCheckout.TestUtil;
 import com.jramanta.cartCheckout.model.Product;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,21 +8,20 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.jramanta.cartCheckout.TestUtil.DELTA;
 import static org.junit.Assert.*;
 
 public class PricingServiceTest {
-
-    private static final double DELTA = 1e-10;
 
     private Map<String, Product> availableProducts;
 
     @Before
     public void setUp() {
         availableProducts = new HashMap<>();
-        Product productA = ProductUtil.initProduct("A", 20.5);
-        Product productB = ProductUtil.initProduct("B", 3000);
-        Product productC = ProductUtil.productWithOffer("C", 40, 5, 150);
-        Product productD = ProductUtil.productWithOffer("D", 70.55, 10, 170.55);
+        Product productA = TestUtil.initProduct("A", 20.5);
+        Product productB = TestUtil.initProduct("B", 3000);
+        Product productC = TestUtil.productWithOffer("C", 40, 5, 150);
+        Product productD = TestUtil.productWithOffer("D", 70.55, 10, 170.55);
 
         availableProducts.put("A", productA);
         availableProducts.put("B", productB);
