@@ -17,7 +17,7 @@ public class PricingServiceTest {
     private Map<String, Product> availableProducts;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         availableProducts = new HashMap<>();
         Product productA = ProductUtil.initProduct("A", 20.5);
         Product productB = ProductUtil.initProduct("B", 3000);

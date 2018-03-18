@@ -12,8 +12,7 @@ public class ProductUtil {
     }
 
     public static WeeklyOffer initOffer(long numOfItems, double offerPrice) {
-        WeeklyOffer offer = new WeeklyOffer(numOfItems, offerPrice);
-        return offer;
+        return new WeeklyOffer(numOfItems, offerPrice);
     }
 
     public static Product productWithOffer(String code, double price, long numOfItems, double offerPrice) {

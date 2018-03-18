@@ -1,7 +1,6 @@
 package com.jramanta.cartCheckout.services;
 
 import com.jramanta.cartCheckout.model.Product;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Map;
@@ -11,10 +10,6 @@ import static org.junit.Assert.*;
 public class InitializeServiceTest {
 
     private static final double DELTA = 1e-10;
-
-    @Before
-    public void setUp() {
-    }
 
     @Test
     public void checkValidInitialization() throws NoSuchMethodException {

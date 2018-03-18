@@ -34,7 +34,7 @@ public class PricingService {
      * @param pricingRule the input as given by the user
      * @return an optional {@code PricingRule}
      * */
-    private static Optional<PricingRule> parsePricingRule(String pricingRule) throws NoSuchMethodException {
+    private static Optional<PricingRule> parsePricingRule(String pricingRule) {
 
         Optional<PricingRule> rule = Optional.empty();
 

@@ -12,7 +12,6 @@ public class CommandService {
      *
      * @param input the input as provided by the application user
      * @return a {@code Command}
-     * @throws NoSuchMethodException
      * */
     public static Command parseCommand(String input) throws NoSuchMethodException {
         if (input != null && !input.isEmpty()) {
