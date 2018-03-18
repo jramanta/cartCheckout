@@ -34,21 +34,24 @@ public class PricingService {
      * @param pricingRule the input as given by the user
      * @return an optional {@code PricingRule}
      * */
-    private static Optional<PricingRule> parsePricingRule(String pricingRule) {
+    private static Optional<PricingRule> parsePricingRule(String pricingRule) throws NoSuchMethodException {
 
         Optional<PricingRule> rule = Optional.empty();
-        Pattern pattern = Pattern.compile(Command.UPDATE.getDescription());
-        Matcher matcher = pattern.matcher(pricingRule);
 
-        if (matcher.find()) {
-            if (matcher.group(4) != null) {
-                rule = Optional.of(new PricingRule(matcher.group(1),
-                        Double.parseDouble(matcher.group(2)),
-                        Integer.parseInt(matcher.group(5)),
-                        Double.parseDouble(matcher.group(6))));
-            } else {
-                rule = Optional.of(new PricingRule(matcher.group(1),
-                        Double.parseDouble(matcher.group(2))));
+        if(pricingRule.matches(Command.UPDATE.getDescription())) {
+            Pattern pattern = Pattern.compile(Command.UPDATE.getDescription());
+            Matcher matcher = pattern.matcher(pricingRule);
+
+            if (matcher.find()) {
+                if (matcher.group(4) != null) {
+                    rule = Optional.of(new PricingRule(matcher.group(1),
+                            Double.parseDouble(matcher.group(2)),
+                            Integer.parseInt(matcher.group(5)),
+                            Double.parseDouble(matcher.group(6))));
+                } else {
+                    rule = Optional.of(new PricingRule(matcher.group(1),
+                            Double.parseDouble(matcher.group(2))));
+                }
             }
         }
 
