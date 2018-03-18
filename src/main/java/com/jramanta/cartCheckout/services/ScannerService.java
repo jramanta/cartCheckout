@@ -9,6 +9,9 @@ import java.util.Scanner;
 
 public class ScannerService {
 
+    /**
+     * The method for scanning, processing and applying user input commands.
+     * */
     public static void processInput(Map<String, Product> availableProducts) {
         while (true) {
             System.out.println("Enter command or type HELP: ");
@@ -25,6 +28,12 @@ public class ScannerService {
         }
     }
 
+    /**
+     * Scanning of the given file path and returns the contents in the format of a string with each line separated by the new line character.
+     *
+     * @param fileName the file path name
+     * @return a string representation of the file's contents
+     * */
     public static String scanFileInput(String fileName) {
 
         StringBuilder result = new StringBuilder("");
