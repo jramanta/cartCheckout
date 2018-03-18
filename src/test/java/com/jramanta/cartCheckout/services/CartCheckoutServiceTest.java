@@ -29,7 +29,7 @@ public class CartCheckoutServiceTest {
         Product productA = TestUtil.initProduct("A", 30);
         availableProducts.put("A", productA);
 
-        double price = CartCheckoutService.calculateCartPrice(cartInput, availableProducts);
+        CartCheckoutService.calculateCartPrice(cartInput, availableProducts);
     }
 
     // SINGLE PRODUCT CART TESTS
@@ -48,7 +48,7 @@ public class CartCheckoutServiceTest {
     }
 
     @Test
-    public void calculateSingleProductWithOfferAndUnitPrice() throws NoSuchMethodException {
+    public void calculateSingleProductWithOfferAndUnitPrice() {
 
         String cartInput = "A A A A A A A";
 
@@ -61,7 +61,7 @@ public class CartCheckoutServiceTest {
     }
 
     @Test
-    public void calculateSingleProductWithOfferOnly() throws NoSuchMethodException {
+    public void calculateSingleProductWithOfferOnly() {
 
         String cartInput = "A A A A A A";
 
@@ -74,7 +74,7 @@ public class CartCheckoutServiceTest {
     }
 
     @Test
-    public void calculateSingleProductWithOfferNotApplied() throws NoSuchMethodException {
+    public void calculateSingleProductWithOfferNotApplied() {
 
         String cartInput = "A A A A";
 
@@ -89,7 +89,7 @@ public class CartCheckoutServiceTest {
     // SINGLE PRODUCT CART TESTS WITH DECIMAL PRICES
 
     @Test
-    public void calculateSingleProductDecimalPriceWithoutOffer() throws NoSuchMethodException {
+    public void calculateSingleProductDecimalPriceWithoutOffer() {
 
         String cartInput = "A A A A A A A";
 
@@ -102,7 +102,7 @@ public class CartCheckoutServiceTest {
     }
 
     @Test
-    public void calculateSingleProductDecimalPriceWithOfferAndUnitPrice() throws NoSuchMethodException {
+    public void calculateSingleProductDecimalPriceWithOfferAndUnitPrice() {
 
         String cartInput = "A A A A A A A";
 
@@ -115,7 +115,7 @@ public class CartCheckoutServiceTest {
     }
 
     @Test
-    public void calculateSingleProductDecimalPriceWithOfferOnly() throws NoSuchMethodException {
+    public void calculateSingleProductDecimalPriceWithOfferOnly() {
 
         String cartInput = "A A A A A A";
 

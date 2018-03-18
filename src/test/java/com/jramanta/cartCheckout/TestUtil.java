@@ -13,7 +13,7 @@ public class TestUtil {
         return aProduct;
     }
 
-    public static WeeklyOffer initOffer(long numOfItems, double offerPrice) {
+    private static WeeklyOffer initOffer(long numOfItems, double offerPrice) {
         return new WeeklyOffer(numOfItems, offerPrice);
     }
 
