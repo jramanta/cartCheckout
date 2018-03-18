@@ -48,4 +48,28 @@ public class CommandServiceTest {
 
     }
 
+    @Test
+    public void testValidHelpCommand() {
+        String input = "HELP";
+        try {
+            Command command = CommandService.parseCommand(input);
+            assertEquals(Command.HELP, command);
+        } catch (NoSuchMethodException e) {
+            fail();
+        }
+
+    }
+
+    @Test
+    public void testValidQuitCommand() {
+        String input = "QUIT";
+        try {
+            Command command = CommandService.parseCommand(input);
+            assertEquals(Command.QUIT, command);
+        } catch (NoSuchMethodException e) {
+            fail();
+        }
+
+    }
+
 }

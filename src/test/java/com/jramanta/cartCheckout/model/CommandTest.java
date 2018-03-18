@@ -78,4 +78,36 @@ public class CommandTest {
         }
     }
 
+    @Test
+    public void testValidHELPCommand() {
+       String input = "HELP";
+
+       assertTrue(input.matches(Command.HELP.getDescription()));
+
+    }
+
+    @Test
+    public void testInvalidHELPCommand() {
+        String input = "help";
+
+        assertFalse(input.matches(Command.HELP.getDescription()));
+
+    }
+
+    @Test
+    public void testValidQUITCommand() {
+        String input = "QUIT";
+
+        assertTrue(input.matches(Command.QUIT.getDescription()));
+
+    }
+
+    @Test
+    public void testInvalidQUITCommand() {
+        String input = "quit";
+
+        assertFalse(input.matches(Command.QUIT.getDescription()));
+
+    }
+
 }
