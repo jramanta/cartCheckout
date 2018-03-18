@@ -23,7 +23,7 @@ public class ScannerService {
                     CommandService.applyCommand(command, input, availableProducts);
                 }
             } catch (NoSuchMethodException e) {
-                System.out.println("Invalid input command.");
+                System.out.println("Invalid input command.\n");
             }
         }
     }

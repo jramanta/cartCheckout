@@ -38,11 +38,11 @@ public class CommandService {
         switch (command) {
             case UPDATE:
                 PricingService.applyPricingRule(input, availableProducts);
-                System.out.println("Pricing rule was applied.");
+                System.out.println("Pricing rule was applied.\n");
                 break;
             case CHECKOUT:
                 Double totalPrice = CartCheckoutService.calculateCartPrice(input, availableProducts);
-                System.out.println("The total price of the cart is: " + totalPrice);
+                System.out.println("The total price of the cart is: " + totalPrice + "\n");
                 break;
             case HELP:
                 printCommandGuidelines();
@@ -62,7 +62,7 @@ public class CommandService {
     private static void printCommandGuidelines() {
         System.out.println("- Enter pricing update command in the format: <PRODUCT> <PRICE> <NUM OF ITEMS> <OFFER PRICE>. ex. A 30 3 70");
         System.out.println("- Enter checkout command in the format of space separated product codes. ex. A B C A D");
-        System.out.println("- Enter QUIT to exit the application.");
+        System.out.println("- Enter QUIT to exit the application.\n");
     }
 
 }
