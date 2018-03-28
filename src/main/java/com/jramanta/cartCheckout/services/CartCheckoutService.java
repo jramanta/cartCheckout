@@ -17,7 +17,7 @@ public class CartCheckoutService {
      * @param cartInput an input String in the format of products separated by a space character.
      * @param availableProducts a map of all available products with key the products' code.
      * */
-    public static Double calculateCartPrice(String cartInput, Map<String, Product> availableProducts) {
+    public static double calculateCartPrice(String cartInput, Map<String, Product> availableProducts) {
         Map<String, Long> cart = buildUserCart(cartInput, availableProducts);
 
         return cart.entrySet()
@@ -30,7 +30,7 @@ public class CartCheckoutService {
      * */
     private static ToDoubleFunction<Map.Entry<String, Long>> calculatePrice(Map<String, Product> availableProducts) {
         return entry -> {
-            Double price = 0d;
+            double price = 0d;
             Product aProduct = availableProducts.get(entry.getKey());
             if (aProduct != null) {
                 price = calculateProductPrice(aProduct, entry.getValue());
@@ -65,8 +65,8 @@ public class CartCheckoutService {
      * @param productCount the count of the product in the cart
      * @return the total price for the input product after the offer has been applied
      * */
-    private static Double calculateProductPrice(Product product, long productCount) {
-        Double productTotalPrice = 0d;
+    private static double calculateProductPrice(Product product, long productCount) {
+        double productTotalPrice = 0d;
 
         if (product.getWeeklyOffer() != null) {
             long offerItems = product.getWeeklyOffer().getNumberOfItems();

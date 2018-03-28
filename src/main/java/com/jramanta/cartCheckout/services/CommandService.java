@@ -42,7 +42,7 @@ public class CommandService {
                 System.out.println("Pricing rule was applied.\n");
                 break;
             case CHECKOUT:
-                Double totalPrice = CartCheckoutService.calculateCartPrice(input, availableProducts);
+                double totalPrice = CartCheckoutService.calculateCartPrice(input, availableProducts);
                 System.out.println("The total price of the cart is: " + totalPrice + ".\n");
                 break;
             case HELP:
